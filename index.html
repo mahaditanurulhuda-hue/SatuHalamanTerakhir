@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Satu Halaman Terakhir</title>
+<style>
+body{
+margin:0;font-family:Arial,sans-serif;background:#0b0b0f;color:white;
+display:flex;justify-content:center;align-items:center;
+min-height:100vh;text-align:center;padding:20px;
+}
+.card{max-width:700px;animation:fade 1s;}
+button{
+margin-top:25px;padding:12px 24px;border:none;border-radius:30px;
+background:#4f7cff;color:white;font-size:16px;cursor:pointer;
+}
+.hidden{display:none;}
+@keyframes fade{from{opacity:0;transform:translateY(15px)}
+to{opacity:1;transform:translateY(0)}}
+.small{opacity:.75;font-size:14px}
+</style>
+</head>
+<body>
+
+<div id="page1" class="card">
+<h1>Selamat Ulang Tahun.</h1>
+<p>Halo, <b>Gelbang</b>.</p>
+<p>Halaman kecil ini aku buat khusus untuk kamu.</p>
+<p class="small">Kalau kamu punya waktu sekitar 10 menit, aku senang kalau kamu mau menyelesaikannya sampai akhir.</p>
+<button onclick="next()">Mulai Perjalanan</button>
+</div>
+
+<div id="page2" class="card hidden">
+<h2>Membuka Kenangan...</h2>
+<p id="loading">0%</p>
+</div>
+
+<div id="page3" class="card hidden">
+<h2>Satu Halaman Terakhir</h2>
+
+<p>Semua ini berawal dari satu pertemuan yang sederhana.</p>
+<p>Lalu tanpa sadar, kamu menjadi seseorang yang begitu berarti.</p>
+
+<p><b>Nanti di bagian ini kamu bisa mengganti dengan 15 foto kalian.</b></p>
+
+<p>📷 Foto 1</p>
+<p>📷 Foto 2</p>
+<p>📷 Foto 3</p>
+<p>... sampai Foto 15</p>
+
+<button onclick="letter()">Lanjut</button>
+</div>
+
+<div id="page4" class="card hidden">
+<h2>Untuk Gelbang</h2>
+
+<p>
+Aku gak tahu setelah hari ini kita akan seperti apa.
+Aku juga gak membuat halaman ini untuk meminta sesuatu.
+Aku cuma ingin mengucapkan terima kasih
+karena pernah menjadi bagian dari hidupku.
+</p>
+
+<p>
+Selamat ulang tahun.
+Semoga kamu selalu sehat,
+semoga semua yang kamu usahakan berjalan baik,
+dan semoga kamu dikelilingi orang-orang yang tulus menyayangimu.
+</p>
+
+<p>
+Kalau suatu hari nanti kamu mengingat aku,
+semoga yang kamu ingat adalah hal-hal baiknya.
+Itu saja sudah lebih dari cukup.
+</p>
+
+<button onclick="endPage()">Selesai</button>
+</div>
+
+<div id="page5" class="card hidden">
+<h1>Terima kasih.</h1>
+<p>Untuk semua cerita.</p>
+<p>Untuk semua tawa.</p>
+<p>Untuk semua pelajaran.</p>
+<h3>Selamat ulang tahun, Gelbang. 🤍</h3>
+</div>
+
+<script>
+function next(){
+document.getElementById("page1").classList.add("hidden");
+document.getElementById("page2").classList.remove("hidden");
+let n=0;
+let el=document.getElementById("loading");
+let t=setInterval(()=>{
+n+=5;
+el.innerText=n+"%";
+if(n>=100){
+clearInterval(t);
+setTimeout(()=>{
+document.getElementById("page2").classList.add("hidden");
+document.getElementById("page3").classList.remove("hidden");
+},600);
+}
+},70);
+}
+function letter(){
+document.getElementById("page3").classList.add("hidden");
+document.getElementById("page4").classList.remove("hidden");
+}
+function endPage(){
+document.getElementById("page4").classList.add("hidden");
+document.getElementById("page5").classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
